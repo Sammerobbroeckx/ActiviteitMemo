@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost
--- Genereertijd: 11 feb 2019 om 08:17
+-- Genereertijd: 11 feb 2019 om 09:35
 -- Serverversie: 5.6.13
 -- PHP-versie: 5.4.17
 
@@ -25,10 +25,10 @@ USE `activiteitenmemo`;
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `acitiviteiten`
+-- Tabelstructuur voor tabel `activiteiten`
 --
 
-CREATE TABLE IF NOT EXISTS `acitiviteiten` (
+CREATE TABLE IF NOT EXISTS `activiteiten` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `TimeStart` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `TimeStop` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -38,14 +38,15 @@ CREATE TABLE IF NOT EXISTS `acitiviteiten` (
   PRIMARY KEY (`ID`),
   KEY `UserID` (`UserID`),
   KEY `UserID_2` (`UserID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `acitiviteiten`
+-- Gegevens worden uitgevoerd voor tabel `activiteiten`
 --
 
-INSERT INTO `acitiviteiten` (`ID`, `TimeStart`, `TimeStop`, `Titel`, `UserID`, `Status`) VALUES
-(1, '2019-02-11 08:06:22', '0000-00-00 00:00:00', 'test', 2, 0);
+INSERT INTO `activiteiten` (`ID`, `TimeStart`, `TimeStop`, `Titel`, `UserID`, `Status`) VALUES
+(1, '2019-02-11 08:06:22', '0000-00-00 00:00:00', 'test', 2, 0),
+(2, '2019-02-11 08:57:48', '0000-00-00 00:00:00', 'test2', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -61,14 +62,15 @@ CREATE TABLE IF NOT EXISTS `memo` (
   `Status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   KEY `UserID` (`UserID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `memo`
 --
 
 INSERT INTO `memo` (`ID`, `UserID`, `Omschrijving`, `Einddatum`, `Status`) VALUES
-(1, 2, 'test', '2019-02-28 08:00:00', 0);
+(1, 2, 'test', '2019-02-28 08:00:00', 0),
+(2, 2, 'Test2', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -81,24 +83,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Password` text,
   `Mail` text,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `user`
 --
 
 INSERT INTO `user` (`ID`, `Password`, `Mail`) VALUES
-(2, 'root', 'root@gmail.com');
+(2, 'root', 'root@gmail.com'),
+(3, 'test', 'test@gmail.com');
 
 --
 -- Beperkingen voor gedumpte tabellen
 --
 
 --
--- Beperkingen voor tabel `acitiviteiten`
+-- Beperkingen voor tabel `activiteiten`
 --
-ALTER TABLE `acitiviteiten`
-  ADD CONSTRAINT `acitiviteiten_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
+ALTER TABLE `activiteiten`
+  ADD CONSTRAINT `activiteiten_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
 
 --
 -- Beperkingen voor tabel `memo`
