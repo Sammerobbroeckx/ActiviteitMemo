@@ -1,0 +1,74 @@
+login
+
+select ID, Password
+from user
+Where Mail = "root@gmail.com"
+
+add user
+
+Insert into user (Mail, Password)
+values ("test@gmail.com","test")
+
+activiteiten opvragen
+
+select Titel, TimeStart, TimeStop, Status
+from activiteiten
+where UserID = 2
+
+activiteit aanmaken
+
+Insert into activiteiten (Status, TimeStop, Titel, UserID)
+values (0, "11/02/2019", "test2", 2)
+
+acitiviteit zoeken op datum
+
+select Titel, TimeStart, TimeStop, Status
+from activiteiten
+where TimeStart = "11/02/2019" and UserID = 2
+
+activiteit zoeken op titel
+
+select Titel, TimeStart, TimeStop, Status
+from activiteiten
+where titel LIKE "%test2%" and UserID = 2
+
+activiteit zoeken op status
+
+select Titel, TimeStart, TimeStop, Status
+from activiteiten
+where Status = 0 and UserID = 2
+
+alle memo's weergeven
+
+select Omschrijving, Status, Einddatum
+from memo
+where UserID = 2
+
+memo aanmaken
+
+insert into memo (einddatum, Omschrijving, Status, UserID)
+values ("30/03/2019", "Test2", 1, 2)
+
+memo's zoeken op omschrijving
+
+select Omschrijving, Status, Einddatum
+from memo
+where UserID = 2 and Omschrijving LIKE "%test%"
+
+memo's zoeken op status
+
+select Omschrijving, Status, Einddatum
+from memo
+where UserID = 2 and Status = 1
+
+memo's zoeken op Einddatum
+
+select Omschrijving, Status, Einddatum
+from memo
+where UserID = 2 and Einddatum LIKE "%30/03/2019%"
+
+actviteiten en memo's opvragen
+
+select A.Titel, A.TimeStart, A.TimeStop, A.Status, M.Omschrijving, M.Status, M.Einddatum
+from activiteiten as A Inner join memo as M on A.UserID=M.UserID
+Where A.UserID = 2
