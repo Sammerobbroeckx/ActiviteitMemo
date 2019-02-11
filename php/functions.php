@@ -23,7 +23,7 @@ function LinkDB()
 //Login
 function Login($pass, $mail)
 {
-	$sql = "select ID, Password from user Where Mail = "$mail";
+	$sql = "select ID, Password from user Where Mail = ".$mail;
 	$result = mysql_query($sql);
 	
 	if (mysql_num_rows($result) == 0) 
