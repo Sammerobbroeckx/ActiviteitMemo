@@ -1,5 +1,4 @@
 <?php
-
 //PHP Functions
 
 //LinkDB
