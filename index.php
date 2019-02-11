@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	
+	include("php.functions.php");
+	LinkDB();
 ?>
 <!DOCTYPE html>
 <html lang="en">
