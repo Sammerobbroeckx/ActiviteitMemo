@@ -8,33 +8,14 @@ if(isset($_POST["mail"]))
 	Login($_POST["pass"], $_POST["mail"]);
 }
 
-//LinkDB
-function LinkDB()
-{
-
-	$servername = "localhost";
-	$username = "root";
-	$password = "usbw";
-	$database = "activiteitenmemo";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $database);
-
-	// Check connection
-	if (!$conn) 
-	{	
-		die("Connection failed: " . mysqli_connect_error());
-	}
-	
-	return $conn;
-}
-
 //Login
 function Login($pass, $mail)
 {
 	$sql = "select ID, Password from user Where Mail = '".$mail."'";
 	
-	$result = mysqli_query(LinkDB(), $sql);
+	require_once("LinkDB.php");
+	
+	$result = mysqli_query($conn, $sql);
 	
 	if (mysqli_num_rows($result) == 0) 
 	{
