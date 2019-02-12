@@ -54,4 +54,10 @@ function Login($pass, $mail)
 	echo "<meta http-equiv='refresh' content='0;url=../index.php'>";
 }
 
+//Function GetMemo
+function GetMemo()
+{
+	
+}
+
 ?>
